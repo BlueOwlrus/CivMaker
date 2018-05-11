@@ -15,6 +15,8 @@ GroupName should be either WRECKAGE (for dead units) or INTIAL (for live units) 
 If you can't find needed unit inthe table, you use it's 'type' instead, like 'uel0202' for pillar (can be looked up in UnitsDB in FAF)
 Current list of avaliable UnitName values:
 
+**EXAMPLE:** Civ[AeonT2pgen][WRECKAGE] 1
+
 ```
 UnitsTable['CybranT1Land'] = 'URB0101'
 UnitsTable['AeonQGate'] = 'UAB0304'
