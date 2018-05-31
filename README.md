@@ -1,6 +1,8 @@
 # CivMaker
 For Supreme Commander FA. Allows civilians placement via blank markers on a map.
 
+It requires python 3.x to work. https://www.python.org/
+
 This script was made to be able to place civilians using ozonex's editor for FAF.
 
 ## IN EDITOR
