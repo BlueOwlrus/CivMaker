@@ -7,10 +7,10 @@ This script was made to be able to place civilians using ozonex's editor for FAF
 
 In the editor, place a blank marker and name it using this template:
 
-Civ[UnitName][GroupName] id
+Civ[UnitName][GroupName]r id
 
 Where UnitName is a name of a unit/building from the table at the beggining of the script (open script via test editor).
-GroupName should be either WRECKAGE (for dead units) or INTIAL (for live units) if you're not planning to use adaptive script for current map. If you're using adaptive, this GroupName allows you to use different groups for dynamic civilians spawns. 'id' is a number, doesnt affect outcome.
+GroupName should be either WRECKAGE (for dead units) or INTIAL (for live units) if you're not planning to use adaptive script for current map. If you're using adaptive, this GroupName allows you to use different groups for dynamic civilians spawns. 'id' is a number, doesnt affect outcome. 'r' at the end is optional: it will make unit to be rotated randomly.
 
 If you can't find needed unit inthe table, you use it's 'type' instead, like 'uel0202' for pillar (can be looked up in UnitsDB in FAF)
 Current list of avaliable UnitName values:
