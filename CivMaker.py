@@ -1,5 +1,6 @@
 import sys
 import re
+import random
 from typing import Dict, List
 
 
@@ -92,7 +93,7 @@ class Unit:
     Orientation = ['', '', '']
     group = "WRECKAGE"
 
-    def __init__(self, type_, pos, rotation_, group_):
+    def __init__(self, type_, pos, rotation_, group_, random_):
         self.id_ = Unit.current_id
         Unit.current_id += 1
         if type_ in UnitsTable:
@@ -101,6 +102,8 @@ class Unit:
             self.type = type_
         self.Position = pos
         self.Orientation = rotation_
+        if random:
+            self.Orientation[1] = str(random.uniform(0, 6.28)) # Random rotation
         self.group = group_
 
     def toStringList(self, tabs):
@@ -129,16 +132,21 @@ f.close()
 MarkersFound = 0
 UnitsList = []
 for i in range(0, len(lines)):
-    marker = re.search("\['Civ\[\w+\]\[\w+\] [0-9]*'\] = {", lines[i])  # searches for civ markers
+    marker = re.search("\['Civ\[\w+\]\[\w+\]r? [0-9]*'\] = {", lines[i])  # searches for civ markers
     if marker is not None:
         MarkersFound += 1
         tmp = re.findall("Civ\[\w+\]", lines[i])[0]  # extracting unit type
         Type = tmp[4: len(tmp) - 1]  # extracting unit type
-        tmp1 = re.findall("\]\[\w+\] ", lines[i])[0]
-        group = tmp1[2: len(tmp1) - 2]
-        position = re.findall("[0-9]+\.[0-9]+", lines[i + 5])
+        tmp1 = re.findall("\]\[\w+\]", lines[i])[0] # extracting unit group
+        group = tmp1[2: len(tmp1) - 1] # extracting unit group
+        tmp2 = re.findall("\]\[\w+\]r?", lines[i])[0] # is rotation random?
+        if tmp2[len(tmp2)-1] == 'r':
+            random_ = True
+        else:
+            random_ = False
+        position = re.findall("[0-9]+(?!\()\.?[0-9]*", lines[i + 5])
         rotation = re.findall("[0-9]+(?!\()\.?[0-9]*", lines[i + 4])
-        UnitsList.append(Unit(Type, position, rotation, group))
+        UnitsList.append(Unit(Type, position, rotation, group, random_))
 
 UnitGroups: Dict[str, List[Unit]] = {}  # grouping units by group names
 for unit in UnitsList:
