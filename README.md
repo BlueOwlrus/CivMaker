@@ -96,7 +96,7 @@ UnitsTable['Wall'] = 'UEB5101'
 ```
 ## HOW TO EXECUTE
 For win use run.bat or this cmd command: 
->python CivMaker.py mapname_save.lua TABS > result.txt
+```python CivMaker.py mapname_save.lua TABS > result.txt```
 Where TABS is number of tablations you want to be in front of resulting code.
 For linux: if you use linux, you can write batch file yourself.
 
