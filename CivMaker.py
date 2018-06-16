@@ -93,7 +93,7 @@ class Unit:
     Orientation = ['', '', '']
     group = "WRECKAGE"
 
-    def __init__(self, type_, pos, rotation_, group_, random_):
+    def __init__(self, type_, pos, rotation_, group_, random1):
         self.id_ = Unit.current_id
         Unit.current_id += 1
         if type_ in UnitsTable:
@@ -102,8 +102,8 @@ class Unit:
             self.type = type_
         self.Position = pos
         self.Orientation = rotation_
-        if random:
-            self.Orientation[1] = str(random.uniform(0, 6.28)) # Random rotation
+        if random1:
+            self.Orientation[1] = str(random1.uniform(0, 6.28)) # Random rotation
         self.group = group_
 
     def toStringList(self, tabs):
@@ -140,10 +140,9 @@ for i in range(0, len(lines)):
         tmp1 = re.findall("\]\[\w+\]", lines[i])[0] # extracting unit group
         group = tmp1[2: len(tmp1) - 1] # extracting unit group
         tmp2 = re.findall("\]\[\w+\]r?", lines[i])[0] # is rotation random?
-        if tmp2[len(tmp2)-1] == 'r':
+        random_ = False
+        if tmp2[len(tmp2)-1] is 'r':
             random_ = True
-        else:
-            random_ = False
         position = re.findall("[0-9]+(?!\()\.?[0-9]*", lines[i + 5])
         rotation = re.findall("[0-9]+(?!\()\.?[0-9]*", lines[i + 4])
         UnitsList.append(Unit(Type, position, rotation, group, random_))
