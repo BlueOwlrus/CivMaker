@@ -98,6 +98,8 @@ UnitsTable['Wall'] = 'UEB5101'
 For win use run.bat or this cmd command: 
 ```python CivMaker.py mapname_save.lua TABS > result.txt```
 Where TABS is number of tablations you want to be in front of resulting code.
+Or use this ```python CivMaker.py %1 TABS > result.txt``` for 
+drag and drop function (drag and drop save.lua on script file)
 For linux: if you use linux, you can write batch file yourself.
 
 ## FINAL
