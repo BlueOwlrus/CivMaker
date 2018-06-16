@@ -103,7 +103,7 @@ class Unit:
         self.Position = pos
         self.Orientation = rotation_
         if random1:
-            self.Orientation[1] = str(random1.uniform(0, 6.28)) # Random rotation
+            self.Orientation[1] = str(random.uniform(0, 6.28)) # Random rotation
         self.group = group_
 
     def toStringList(self, tabs):
